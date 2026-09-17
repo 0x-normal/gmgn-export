@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      width: 100%;
+      min-width: 240px;
+      padding: 14px 16px 16px;
+      font-family: system-ui, sans-serif;
+      font-size: 13px;
+      background: #0f0f13;
+      color: #e2e8f0;
+    }
+    h3 { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+    #token-info {
+      font-size: 11px;
+      color: #64748b;
+      margin-bottom: 12px;
+      word-break: break-all;
+      min-height: 16px;
+    }
+    button {
+      width: 100%;
+      padding: 8px 12px;
+      margin-top: 8px;
+      border: none;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: opacity 0.15s;
+    }
+    button:disabled { opacity: 0.45; cursor: not-allowed; }
+    #btn-start  { background: #7c3aed; color: #fff; }
+    #btn-pause  { background: #d97706; color: #fff; display: none; }
+    #btn-resume { background: #7c3aed; color: #fff; display: none; }
+    #btn-export { background: #059669; color: #fff; display: none; }
+    #hold-hint  { font-size: 10px; color: #64748b; margin-top: 4px; line-height: 1.4; }
+    #btn-refresh {
+      background: #1e1e2e;
+      color: #94a3b8;
+      border: 1px solid #334155;
+      margin-top: 0;
+      padding: 5px 10px;
+      font-size: 11px;
+      font-weight: 500;
+    }
+    #status {
+      margin-top: 10px;
+      font-size: 11px;
+      color: #94a3b8;
+      min-height: 16px;
+      line-height: 1.4;
+    }
+    #filename-row {
+      display: none;
+      margin-top: 8px;
+    }
+    #filename-label {
+      font-size: 10px;
+      color: #64748b;
+      margin-bottom: 3px;
+    }
+    #filename-input {
+      width: 100%;
+      padding: 5px 8px;
+      background: #1e1e2e;
+      border: 1px solid #334155;
+      border-radius: 5px;
+      color: #e2e8f0;
+      font-size: 11px;
+      font-family: monospace;
+    }
+    #filename-input:focus {
+      outline: none;
+      border-color: #7c3aed;
+    }
+  </style>
+</head>
+<body>
+  <h3>gmgn Trade Exporter</h3>
+  <div id="token-info">Loading…</div>
+  <button id="btn-refresh" title="Re-detect the current token page without reloading it">↻ Refresh detection</button>
+  <button id="btn-start">Start scraping</button>
+  <button id="btn-pause">Pause</button>
+  <button id="btn-resume">Resume</button>
+  <div id="hold-hint">Pause holds your collected rows. Switch to another token, then Resume to keep adding — Export once for a single CSV.</div>
+  <div id="filename-row">
+    <div id="filename-label">Filename</div>
+    <input id="filename-input" type="text" spellcheck="false" />
+  </div>
+  <button id="btn-export">Export CSV</button>
+  <div id="status">Navigate to a gmgn.ai token page</div>
+  <script src="popup.js"></script>
+</body>
+</html>
